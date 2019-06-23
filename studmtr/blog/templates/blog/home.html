@@ -1,0 +1,60 @@
+{% extends "blog/base.html" %}
+  {% block content %}
+  {% if user.is_authenticated %}
+         {% for post in posts%}
+    <article class="media content-section">
+      <img class = "rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href = "{% url 'user-profile' post.author.id %}">{{ post.author }}</a>
+          <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href = "{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content }}</p>
+      </div>
+    </article>
+         {% endfor%}
+    {% else %}
+     <div class="card">
+      <div class="card-body">
+        <h4 class="card-title" style="text-align: center;">ABOUT:</h4>
+        <p class="card-text">The Student Mentor Programme (SMP) is a programme of student community, within The National
+Institute of Engineering (NIE),Mysuru, with the following primary objectives:
+1. Enabling constructive interaction, guidance and mentorship of junior students by senior students
+2. Providing a reliable and comprehensive support system to motivate students to excel in both
+academic and non-academic fields and to make the most of their life at the Institute.</p>
+<h4 style="text-align: center;">FUNCTIONING:</h4>
+<p>The Student Mentor body is vested with the following powers:
+In matters pertaining to hostel-life, which require intervention in the interest of the wards, the
+student mentors are empowered to do so by notifying the case to the hostel authorities. </p>
+<h4 style="text-align: center;">ROLE OF STUDENT MENTOR:</h4>
+<p> Each Institute Student Mentor is assigned a group of 10-15 freshmen, who would henceforth
+become his/her mentees. Under normal circumstances, it is the primary duty of the SM to guide the
+group of students assigned to him/her through their first year in the institute. However, the
+responsibility of each mentor extends to the entire first year batch and hence, the Mentor should</p>
+<p>feel free to intervene in any matter related to freshmen.</p>
+<p>1. The Mentor should ensure to the best of his/her ability that the freshmen (especially his/her</p>
+mentees) are able to adjust comfortably to life at NIE - both in the institute and in the hostel.</p>
+<p>2. For this, it is imperative that the Mentor establishes a close rapport with his/her mentees.</p>
+<p>3. The Mentor should see to it that he/she meets them at certain critical junctures of the first year</p>
+such as the first few weeks of the semester, well before Test, Mid Semester Exam, end
+semester exams and at the time of results.
+<p>4. The Mentor must act on any complaint of misbehavior by a senior. The institute has strict</p>
+policies against ragging of any form.
+<p>5. Time management is a crucial aspect of one's life at NIE, and the Mentor should tell the
+mentees about this aspect. The Mentor has to impress upon his/her mentee the need to
+maintain a balance between academic and co-curricular activities, so that one utilizes one's</p>
+time at NIE in the most productive manner.
+<p>6. The Mentor must ensure that no activity is forced upon any freshman against his/her will. The thin line between forcing and persuasion is one which the Mentor has to judge based upon</p>
+his/her perception of the freshman, and the matter at hand.
+<p>7.The Mentor should be ready to help his/her mentee overcome any problems (academic or
+social) in an advisory role and act as a responsible role model. At the same time, he must
+realize the importance of making his/her mentee independent and self-reliant. Mentors must
+refrain from spoon feeding the Mentees.</p>
+        <a href="https://www.nie.ac.in" class="card-link">www.nie.ac.in</a>
+      </div>
+    </div>
+    {% endif %} 
+{% endblock content %}
+
+  

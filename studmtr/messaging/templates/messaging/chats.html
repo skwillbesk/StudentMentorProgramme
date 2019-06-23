@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block content %}
+	{% for chat in chats %}		
+		<a href= "/chat/{{ chat.sender.id }}/">{{ chat.sender }}</a>
+		<h6>{{ chat.msg_content }}<h6>
+		</br>
+		</br>
+	{% endfor %}
+{% endblock %}
+

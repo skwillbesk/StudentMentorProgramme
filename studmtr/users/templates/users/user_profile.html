@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ var.image.url }}">
+        <div class="media-body">
+          <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'chat' var.id  %}" style="text-align: center;">MESSAGE</a>
+        <ul class="list-group">
+        {% if var.year == 'Third' %}
+               <span class="badge badge-success">MENTOR</span>
+
+        {% else %}
+         <span class="badge badge-warning">STUDENT</span>
+        {% endif %}
+          <li class="list-group-item" style="font: icon;"><h6> <span class="badge badge-secondary">Name : </span></h6>{{ var.user.first_name}} {{ var.user.last_name }}</li>
+          <li class="list-group-item" style="font: icon;"><h6> <span class="badge badge-secondary">Email : </span></h6>{{ var.user.email }}</li>
+          <li class="list-group-item" style="font: icon;"><h6> <span class="badge badge-secondary">Year : </span></h6>{{ var.year }}</li>
+          <li class="list-group-item" style="font: icon;"><h6> <span class="badge badge-secondary">Branch : </span></h6>{{ var.branch }}</li>
+          <li class="list-group-item" style="font: icon;"><h6> <span class="badge badge-secondary">Mobile:   +91 </span></h6>{{ var.mobile }}</li>
+          <li class="list-group-item" style="font: icon;"><h6> <span class="badge badge-secondary"> Bio: </span></h6>{{ var.bio }}</li>
+        </ul>
+      </div>
+    </div>
+{% endblock content %}

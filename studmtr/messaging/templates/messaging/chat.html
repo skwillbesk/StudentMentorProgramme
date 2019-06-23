@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	{% for chat in chats %}
+		{% if chat.sender  == request.user %}
+		<div style="text-align: right;">
+			<a class="mr-2" href=  "{% url 'user-profile' chat.sender.id %}">{{ chat.sender }}</a>
+			<p>{{ chat.msg_content }}</p>
+			<p style="font-style: italic;font-size: 12px;">{{ chat.created_at }}</p>
+		</div>
+		{% else %}
+		<div>
+			<a class="mr-2" href=  "{% url 'user-profile' chat.sender.id %}">{{ chat.sender }}</a>
+			<p>{{ chat.msg_content }}</p>
+			<p style="font-style: italic;font-size: 12px;">{{ chat.created_at }}</p>
+		</div>
+		{% endif %}
+	{% endfor %}
+	 <form method="POST">
+            {% csrf_token %}
+            <fieldset class = "form-group">
+                {{ form|crispy }}
+            </fieldset>
+            <div class = 'form-group'>
+                <button class = 'button btn-outline-info' type = "submit">Send</button>
+            </div>
+        </form>
+{% endblock content %}
+
