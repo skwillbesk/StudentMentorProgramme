@@ -38,6 +38,3 @@ def chats(request):
 	}
 	
 	return render(request,'messaging/chats.html',context)
-
-
-
