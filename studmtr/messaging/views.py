@@ -11,7 +11,7 @@ def chat(request,pk):
 	if request.method == 'POST':
 	   form = CreateMessageForm(request.POST)
 	   form.instance.sender = request.user
-	   form.instance.reciever = return_user(pk)
+	   form.instance.reciever = User.objects.get(id = pk)
 	   if form.is_valid():
 		   form.save()
 		   return redirect('chat',pk)
@@ -41,7 +41,3 @@ def chats(request):
 
 
 
-def return_user(pk):
-	for i in User.objects.all():
-		if i.id == pk:
-			return i
